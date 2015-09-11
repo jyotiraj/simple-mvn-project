@@ -26,5 +26,27 @@ public class CalcStatsTest {
 		CalcStats calcStats = new CalcStats(integers);
 		assertEquals(new Integer(5), calcStats.getMinimum());
 	}
-
+	
+	@Test
+	public void testMinValueWithTwoElements() {
+		List<Integer> integers = new ArrayList<Integer>();
+		integers.add(5);
+		integers.add(-10);
+		CalcStats calcStats = new CalcStats(integers);
+		assertEquals(new Integer(-10), calcStats.getMinimum());
+	}
+	@Test
+	public void testMinValueWithSameElements() {
+		List<Integer> integers = new ArrayList<Integer>();
+		integers.add(5);
+		integers.add(5);
+		integers.add(5);
+		CalcStats calcStats = new CalcStats(integers);
+		assertEquals(new Integer(5), calcStats.getMinimum());
+	}
+	@Test
+	public void testThatWePassNullAtConstruction() {	
+		CalcStats calcStats = new CalcStats(null);
+		assertNull(calcStats.getMinimum());
+	}
 }
