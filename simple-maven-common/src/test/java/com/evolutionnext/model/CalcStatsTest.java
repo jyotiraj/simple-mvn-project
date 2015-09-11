@@ -4,6 +4,7 @@ package com.evolutionnext.model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,5 +49,18 @@ public class CalcStatsTest {
 	public void testThatWePassNullAtConstruction() {	
 		CalcStats calcStats = new CalcStats(null);
 		assertNull(calcStats.getMinimum());
+	}
+	@Test
+	public void testAverageWithNoElements() {	
+		List<Integer> integers = new ArrayList<Integer>();
+		CalcStats calcStats = new CalcStats(integers);
+		try {
+			calcStats.getAverage();
+			fail("This line should not be invoked.");
+		} catch (IllegalStateException e) {
+			System.out.println("The Average method threw an exception: "+e.getMessage());
+		}catch (NullPointerException e) {
+			System.out.println("The Average method threw an exception: "+e.getMessage());
+		}
 	}
 }

@@ -15,5 +15,10 @@ public class CalcStats {
 		if (list == null || list.size() == 0 ) return null;
 		return Collections.min(list);
 	}
+	public Integer getAverage() {
+		throw new NullPointerException("uh oh");
+		
+		//return null;
+	}
 
 }
